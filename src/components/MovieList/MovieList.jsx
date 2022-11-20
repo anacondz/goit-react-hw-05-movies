@@ -1,26 +1,28 @@
-import { useLocation } from "react-router-dom";
-import { TrendingMovieLink, List, ListItem } from "./MovieList.styled";
+import { useLocation } from 'react-router-dom';
+import { TrendingMovieLink, List, ListItem } from './MovieList.styled';
 
 const MovieList = ({ trending, loading }) => {
-    const location = useLocation();
-    return (
-        <>
-            {loading ? (<div>Loading</div>)
-                : (
-                    <List>
-                        {trending.map(({ id, title, name }) => {
-                            <ListItem key={id}>
-                                <TrendingMovieLink to={`movies/${id}`}
-                                    state={{ from: location.pathname }}>
-                                    {title || name}
-                                    </TrendingMovieLink>
-                            </ListItem>
-                        })}
-                    </List>
-                )
-        }
-        </>
-    )
-}
+  const location = useLocation();
+  return (
+    <>
+      {loading ? (
+        <div>Loading</div>
+      ) : (
+        <List>
+          {trending.map(({ id, title, name }) => (
+            <ListItem key={id}>
+              <TrendingMovieLink
+                to={`movies/${id}`}
+                state={{ from: location.pathname }}
+              >
+                {title || name}
+              </TrendingMovieLink>
+            </ListItem>
+          ))}
+        </List>
+      )}
+    </>
+  );
+};
 
 export default MovieList;

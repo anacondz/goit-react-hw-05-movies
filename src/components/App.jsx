@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
+import { GlobalStyle } from './GlobalStyle';
 
 const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies/Movies'));
@@ -23,6 +24,7 @@ export const App = () => {
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
+       <GlobalStyle />
     </>
   );
 };

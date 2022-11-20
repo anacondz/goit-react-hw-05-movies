@@ -1,5 +1,6 @@
 import { useEffect, useState, Suspense } from 'react';
 import { Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
+import { TiChevronLeft } from 'react-icons/ti';
 import { movieById } from 'services/api';
 import {
   MovieCard,
@@ -31,6 +32,7 @@ const MovieDetails = () => {
         const movieData = await movieById(movieId);
         setMovie(movieData);
       } catch (e) {
+        console.log(e);
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +48,7 @@ const MovieDetails = () => {
   }
   const { genres, title, release_date, overview, vote_average, poster_path } =
     movie;
-  const imageSRC = poster_path ? IMAGEURL + poster_path : IMAGEURL;
+  const imageSRC = poster_path ? IMAGEURL + poster_path : IMAGEURL ;
   const userScore = Math.round((Number(vote_average) * 100) / 10);
   const movieGenres = genres.map(genre => genre.name).join(' ');
   const releaseDate = release_date.slice(0, 4);
@@ -56,6 +58,7 @@ const MovieDetails = () => {
       <Wrapper>
         {location.state?.from && (
           <BackButton onClick={handleGoBackButton}>
+            <TiChevronLeft />
             <span>Go back</span>
           </BackButton>
         )}

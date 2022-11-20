@@ -6,10 +6,10 @@ import { ListItem, Section, List } from "./Cast.styled";
 const IMAGEURL = 'https://image.tmdb.org/t/p/w500';
 
 const Cast = () => {
-    const { movieId } = useParams();
-    const { isLoading, setIsLoading } = useState();
-    const { cast, setCast } = useState(0)
-
+  const { movieId } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [cast, setCast] = useState(null);
+  
     useEffect(() => {
         const fetchData = async() => {
             setIsLoading(true)

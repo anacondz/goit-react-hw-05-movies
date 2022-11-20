@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieList from "components/MovieList/MovieList";
-import { tredningMovies } from "services/api";
+import { getTrendingMovies } from "services/api";
 
 const Home = () => {
     const [trendingMovies, setTrendingMovies] = useState([]);
@@ -10,7 +10,7 @@ const Home = () => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const trendingMovies = await trendingMovies();
+        const trendingMovies = await getTrendingMovies();
         setTrendingMovies(trendingMovies);
       } catch (e) {
       } finally {
