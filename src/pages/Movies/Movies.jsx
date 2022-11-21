@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { moviesByName } from 'services/api';
@@ -54,13 +55,14 @@ const Movies = () => {
           name="movie"
           placeholder="Enter the movie..."
           autoComplete="off"
-          color="secondary"
+          color="success"
         />
         <Button
           type="submit"
           variant="outlined"
-          color="secondary"
-          size="small"
+          color="success"
+                  size="small"
+                   endIcon={<AiOutlineSearch />}
          
         >
           Search
